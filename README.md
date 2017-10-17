@@ -16,6 +16,7 @@ Usage:
 In my home, this work!
 
 /* -------------------------------------------- */
+
 In french:
 Ceci sont mes premiers fichiers Dockerfile et docker-compose.yml.
 Mon apt-proxy avec apt-cacher-ng est créé à partir du docker debian:stable 
@@ -32,6 +33,6 @@ Usage:
  docker build -t apt-proxy .
  docker compose up
 
-Chez moi, cela fonctionne!
+!! Chez moi, cela fonctionne !!
 
 
