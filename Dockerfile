@@ -18,16 +18,17 @@ ENV APT_CACHER_NG_CACHE_DIR=/var/cache/apt-cacher-ng \
 
 VOLUME  /var/cache/apt-cacher-ng
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     libmime-base64-perl \
     locales \
     sed \
+    curl \
     apt-cacher-ng
 
 RUN echo "locales locales/default_environment_locale select fr_FR.UTF-8" | debconf-set-selections \
     && echo "locales locales/locales_to_be_generated multiselect 'fr_FR.UTF-8 UTF-8'" | debconf-set-selections \
     && echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata && locale-gen --purge en_US.UTF-8  \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* ;
 
 EXPOSE  3142
 
